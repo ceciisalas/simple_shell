@@ -1,18 +1,28 @@
 #include "shell.h"
 
 /**
- * shell - creates a simple shell
- * @ac: argument count
- * @av: argument vectors
- * @env: environmental variables
- * Return: 0 on success
+ * _strcat - a function
+ * @dest: dest
+ * @src: string
+ *
+ * Return: 1 or 0
  */
-int shell(int ac, char **av, char **env)
+
+char	*_strcat(char *dest, char *src)
 {
-	(void)ac;
-	(void)av;
+	int	i;
+	int	j;
 
-	prompt(env);
-
-	return (0);
+	i = 0;
+	j = 0;
+	while (dest[i] && dest[i] != '\0')
+		i++;
+	while (src[j])
+	{
+		dest[i] = src[j];
+		i++;
+		j++;
+	}
+	dest[i] = '\0';
+	return (dest);
 }

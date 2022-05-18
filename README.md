@@ -3,6 +3,8 @@
 ## We are practising the C language by recreating an UNIX shell...
 -----------------------------------------------------------------
 ## Requirements
+---------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------
 ### General
 Allowed editors: vi, vim, emacs
 All your files will be compiled on Ubuntu 14.04 LTS
@@ -15,19 +17,20 @@ All your header files should be include guarded
 Use system calls only when you need to
 
 The available command specifiers are
-*	chdir 
-*	execve 
-*	exit 
-*	fork 
-*	free
-*	getcwd 
-*	getline
-*	isatty
-*	malloc
-*	perror
-*	stat
-*	strtok
-*	wait
+* chdir 
+* execve 
+* exit 
+* fork 
+* free
+* getcwd 
+* getline
+* isatty
+* malloc
+* perror
+* stat
+* strtok
+* wait
+----------------------------------------------------------------
 ## AUTHORS
 Ana Cecilia Zapatalas
 Cindy Ziemi

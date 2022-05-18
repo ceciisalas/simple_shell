@@ -1,0 +1,3 @@
+# Files that have to be ignored.
+*~
+.sh

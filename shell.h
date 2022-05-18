@@ -1,64 +1,62 @@
-#ifndef SHELL_H
-#define SHELL_H
+#ifndef SHELL
+#define SHELL
 
-#include <stdio.h>
 #include <stdlib.h>
-#include <unistd.h>
+#include <stdio.h>
 #include <string.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/stat.h>
 #include <sys/wait.h>
-#include <sys/wait.h>
-#include <errno.h>
-#include <stddef.h>
-#include <sys/start.h>
+#include <wait.h>
+#include <fcntl.h>
+#include <dirent.h>
 #include <signal.h>
 
-int _putchar(char c);
-void _puts(char *str);
-int _strlen(char *s);
-char *strdup(char *str);
-char *concat_all(char *name, char *sep, char *value);
-
-char **splitstring(char *str, const char *delim);
-void execute(char **argv);
-void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
-
-extern char **environ;
-
 /**
- * struc list_path - Linked list containing PATH directories
- * @dir: directory
- * @p: pointer to the next node
+ * struct list - linked list for environmental variables
+ * @var: holds environmental variable string
+ * @next: points to next node
  */
-typedef struc list_path
+typedef struct list
 {
-	char *dir;
-	struct list_path *p;
-} list_path;
+	char *var;
+	struct list *next;
 
-char *getenv(const char *name);
-list_path *add_node_end(list_path **head, char *str);
-list_path *linkpath(char *path);
-char *_which(char *filename, list_path *head);
+} list_t;
 
-/**
- * struct mybuild - pointer to function with corresponding buildin command
- * @name: buildin command
- * @func: execute buildin command
- */
-typedef struct mybuild
-{
-	char *name;
-	void (*func)(char **);
-} mybuild;
-
-void(*checkbuild(char **arv))(char **arv);
-int _atoi(char *s);
-void exit(char **arv);
-void env(char **arv);
-void _setenv(char **arv);
-void _unsetenv(char **arv);
-
-void freearv(char **arv);
-void free_list(list_path *head);
+/* function prototypes */
+int prompt(char **env);
+void *__realloc(void *ptr, unsigned int old_size, unsigned int new_size);
+size_t get_line(char **str);
+int t_strl(char *str, int pos, char delm);
+char *ignore_space(char *str);
+char **_str_tok(char *str, char *delm);
+char **c_str_tok(char *str, char *delm);
+char *_strcat(char *dest, char *src);
+char *_strdup(char *str);
+char *_strcpy(char *dest, char *src);
+int _strcmp(char *s1, char *s2);
+int _cd(char **str, list_t *env, int num);
+int built_in(char **token, list_t *env, int num, char **command);
+void non_interactive(list_t *env);
+char *_which(char *str, list_t *env);
+int _exit(char **s, list_t *env, int num, char **command);
+int __execve(char *argv[], list_t *env, int num);
+void free_double_ptr(char **str);
+void free_linked_list(list_t *list);
+int _env(char **str, list_t *env);
+char *get_env(char *str, list_t *env);
+list_t *env_linked_list(char **env);
+list_t *add_end_node(list_t **head, char *str);
+size_t print_list(list_t *h);
+int delete_nodeint_at_index(list_t **head, int index);
+int _unsetenv(list_t **env, char **str);
+int _setenv(list_t **env, char **str);
+int find_env(list_t *env, char *str);
+void not_found(char *str, int num, list_t *env);
+void cant_cd_to(char *str, int c_n, list_t *env);
+void illegal_number(char *str, int c_n, list_t *env);
+char *int_to_string(int num);
 
 #endif

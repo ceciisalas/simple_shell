@@ -32,5 +32,5 @@ The available command specifiers are
 * wait
 ----------------------------------------------------------------
 ## AUTHORS
-Ana Cecilia Zapatalas
-Cindy Ziemi
+- Ana Cecilia Zapatalas
+- Cindy Ziemi

@@ -1,4 +1,5 @@
-# Files that have to be ignored.
+#Files that have to be ignored.
 *~
 *.sh
 *.vscode
+*.json
